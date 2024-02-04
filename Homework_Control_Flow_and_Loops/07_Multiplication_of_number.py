@@ -1,5 +1,8 @@
-number = int(input("Please enter the number: "))
-listOne = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-for multiplicationList in listOne:
-    result = number * multiplicationList
-    print(f"{number} * {multiplicationList} = {result}")
+def sum_of_elements(element_list):
+    result = sum(my_list)
+    return result
+
+
+my_list = [-1, 1]
+
+print(sum_of_elements(my_list))
