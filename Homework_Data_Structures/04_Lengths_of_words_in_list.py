@@ -1,4 +1,5 @@
 list_of_word = ["Pesho", "Gosho", "Ivan"]
-for i in list_of_word:
-    print(i, len(i))
+name_length = {name: len(name) for name in list_of_word}
+
+print("Name length: ", name_length)
 
