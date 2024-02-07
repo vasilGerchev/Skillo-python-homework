@@ -1,7 +1,11 @@
-def hash_list(my_list):
-    return hash(tuple(my_list))
+def even_sum_procedural(lis):
+    even_sum = 0
+    for num in ls:
+        if num % 2 == 0:
+            even_sum += num
+    return even_sum
 
 
-my_list = (1, 5, 7, 7, 8)
-hashed_value = hash_list(my_list)
-print("Hashed value:", hashed_value)
+ls = list(range(1, 5))
+
+print(even_sum_procedural(ls))
