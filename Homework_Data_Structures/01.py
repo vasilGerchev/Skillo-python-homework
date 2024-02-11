@@ -1,11 +1,28 @@
-def even_sum_procedural(lis):
-    even_sum = 0
-    for num in ls:
-        if num % 2 == 0:
-            even_sum += num
-    return even_sum
+set_one = {1, 2, 3, 4, 5}
+set_two = {2, 3, 4}
+set_three = {4, 5}
+set_four = {2, 3, 4}
+
+# {
+#     2: False,
+#     3: False,
+#     4: False
+# }
 
 
-ls = list(range(1, 5))
+def is_subset(set_a, set_b):
+    if len(set_a) > len(set_b):
+        return False
 
-print(even_sum_procedural(ls))
+    dict = {elem: False for elem in set_a}
+    for elem in set_b:
+        if dict.get(elem) is not None:
+            dict[elem] = True
+
+    return len(list(filter(lambda val: val is True, dict.values()))) == len(set_a)
+
+
+print(f"set_one <= set_two {is_subset(set_one, set_two)}")
+print(f"set_two <= set_one {is_subset(set_two, set_one)}")
+print(f"set_three <= set_one {is_subset(set_three, set_one)}")
+print(f"set_four <= set_two {is_subset(set_four, set_two)}")
