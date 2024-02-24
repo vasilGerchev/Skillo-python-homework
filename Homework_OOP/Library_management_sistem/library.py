@@ -1,10 +1,18 @@
 from book import Book
+from reader import Reader
 
 
 class Library:
 
     def __init__(self):
         self.books = []
+        self.reader = []
+
+
+    def add_reader(self, name, id_):
+        reader = Reader(name, id_)
+        self.reader.append(reader)
+        return f"Added Reader: {name}"
 
     def add_book(self, name, book_id, autor):
         book = Book(name, book_id, autor)
@@ -19,11 +27,11 @@ class Library:
             elif book.name == name or book.book_id == book_id:
                 return f"Wrong Name or Book ID"
 
-    def rent_book(self, name, book_id):
+    def rent_book(self, name, book_id, reader):
         for book in self.books:
             if book.book_id == book_id and book.is_available:
                 book.is_available = False
-                return f"Rented book: {book.name}"
+                return f"Rented book: {book.name} is rented from {reader}"
             else:
                 return "Book not available or not found"
 
@@ -38,7 +46,8 @@ class Library:
 
 Library = Library()
 
-
+# add reader
+added_reader = Library.add_reader("Vasil Gerchev", 98765)
 # add book
 added_book = Library.add_book("The Great Gatsby", 1234567, "F. Scott Fitzgerald")
 print(added_book)
@@ -49,10 +58,10 @@ print(added_book)
 added_book = Library.add_book("1984", 1234569, "George Orwell")
 print(added_book)
 
-remove_book = Library.remove_book("To Kill a Mockingbird", 1234567,)
+remove_book = Library.remove_book("To Kill a Mockingbird", 1234567, )
 print(remove_book)
 
-remove_book = Library.remove_book("To Kill a Mockingbird", 1234568,)
+remove_book = Library.remove_book("To Kill a Mockingbird", 1234568, )
 print(remove_book)
 
 archived_book = Library.archive_book("The Great Gatsby", 1234567)
@@ -60,3 +69,6 @@ print(archived_book)
 
 archived_book = Library.archive_book("To Kill a Mockingbird", 1234568)
 print(archived_book)
+
+rented_book = Library.rent_book("The Great Gatsby", 1234567, "Vasil Gerchev")
+print(rented_book)

@@ -1,12 +1,41 @@
-class Persone:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+class Human:
+    def __init__(self, height, weight, nationality):
+        self.height = height
+        self.weight = weight
+        self.nationality = nationality
 
-    def greate(self):
-        return self.name, self.age
+    def __str__(self):
+        return "Human\n" + f"Gender: {self.gender()}\n" + \
+            f"Nationality: {self.nationality}\n" + f"Weight: {self.weight}\n" + f"Height: {self.height}\n"
+
+    def get_height(self):
+        return self.height
+
+    def set_height(self):
+        self.height = height
+
+    def gender(self):
+        pass
 
 
-person1 = Persone('Vasil', 39)
+class Man(Human):
+    #  def __str__(self):
+    # return super().__str__() + f" Gender: {self.gender()}"
 
-print(person1.greate())
+    def gender(self):
+        return 'Male'
+
+
+class Women(Human):
+    def __str__(self):
+        return super().__str__() + f"Gender: {self.gender()}"
+
+    def gender(self):
+        return 'Female'
+
+
+man = Man(180, 80, 'Bulgarian')
+woman = Women(155, 45, 'Bulgarian')
+
+print(man)
+print(woman)

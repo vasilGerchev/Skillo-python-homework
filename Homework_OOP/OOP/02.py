@@ -1,20 +1,44 @@
-class Dictionary:
-    def __init__(self):
-        self.value = None
-        self.key = None
+# Book
+#   - add
+#   - remove
+#   - store
+#   - rent
+#
+# Reader
+#   - add
+#   - remove
+import datetime
 
-    def get_value(self, key):
-        return self.key, self.value
-
-    def set_value(self, key, value):
-        self.key = key
-        self.value = value
-
-
-word_length = Dictionary()
-
-word_length.set_value('one', 3)
+from Homework_OOP.Library_management_sistem.library import Library
+from Homework_OOP.Library_management_sistem.book import Book
+from reader import Reader
 
 
-print(word_length.get_value('one'))
+library = Library(
+    name="St. St. Cyril and Methodius",
+    address="Vasil Levski Blvd, 1504 Sofia"
+)
 
+book = Book(
+    id_=1,
+    name="War and Peace"
+)
+
+reader = Reader(
+    id_=1,
+    name="Tsvetan Tsvetanov"
+)
+
+amount = 3
+return_date = datetime.datetime(2024, 3, 8)
+
+library.add_book(book)
+library.remove_book(book.id)
+# What does it mean to store a book? Will it affect renting? Will it affect removing?
+library.store_book(book.id)
+
+# A reader can rent a book if they're subscribed to the library
+library.rent_book(book.id, reader.id, return_date)
+
+library.subscribe(reader)
+library.unsubscribe(reader.id)

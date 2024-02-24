@@ -1,36 +1,57 @@
-class Student:
-    def __init__(self, name, age):
-        self._name = name  # Private attribute for name
-        self._age = age  # Private attribute for age
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+        self.is_available = True
 
-    # Getter method for name
-    def get_name(self):
-        return self._name
+class Library:
+    def __init__(self):
+        self.books = []
 
-    # Setter method for name
-    def set_name(self, name):
-        self._name = name
+    def add_book(self, title, author):
+        book = Book(title, author)
+        self.books.append(book)
+        print(f"Added book: {book.title} by {book.author}")
 
-    # Getter method for age
-    def get_age(self):
-        return self._age
+    def remove_book(self, title):
+        for book in self.books:
+            if book.title == title:
+                self.books.remove(book)
+                print(f"Removed book: {book.title}")
+                return
+        print("Book not found.")
 
-    # Setter method for age
-    def set_age(self, age):
-        self._age = age
+    def rent_book(self, title):
+        for book in self.books:
+            if book.title == title and book.is_available:
+                book.is_available = False
+                print(f"Rented book: {book.title}")
+                return
+        print("Book not available or not found.")
 
+    def archive_book(self, title):
+        for book in self.books:
+            if book.title == title:
+                book.is_available = True
+                print(f"Archived book: {book.title}")
+                return
+        print("Book not found.")
 
-# Demonstration of usage
-student = Student("Alice", 20)
+# Example usage:
+library = Library()
 
-# Accessing attributes using getter methods
-print("Student name:", student.get_name())  # Output: Student name: Alice
-print("Student age:", student.get_age())  # Output: Student age: 20
+# Adding books
+library.add_book("The Great Gatsby", "F. Scott Fitzgerald")
+library.add_book("To Kill a Mockingbird", "Harper Lee")
+library.add_book("1984", "George Orwell")
 
-# Using setter methods to update attributes
-student.set_name("Bob")
-student.set_age(22)
+# Renting a book
+library.rent_book("1984")
 
-# Accessing attributes after update
-print("Updated student name:", student.get_name())  # Output: Updated student name: Bob
-print("Updated student age:", student.get_age())
+# Removing a book
+library.remove_book("The Great Gatsby")
+
+library.rent_book("The Great Gatsby")
+
+# Archiving a book
+library.archive_book("To Kill a Mockingbird")
