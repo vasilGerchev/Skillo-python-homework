@@ -1,0 +1,5 @@
+This is a test file.
+Hello from the test file.
+
+This is a example for file addingThis is a example for file addingHello, World!
+This is a simple example of file adding.
