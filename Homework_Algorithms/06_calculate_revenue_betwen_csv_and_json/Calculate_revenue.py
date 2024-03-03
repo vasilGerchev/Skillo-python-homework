@@ -8,6 +8,7 @@ def read_product_price():
         product_json = json.load(products)
         for product in product_json:
             product_price[product["name"]] = product["price"]
+
     return product_price
 
 
@@ -28,8 +29,22 @@ def read_product_sale():
 
 
 def calculate_revenue(product_sale, product_price):
-    pass
+    revenue = {}
+    for sales in product_sale:
+        name = sales["name"]
+        product_revenue = float(product_price[name]) * float(sales["amount"])
+        if revenue.get(name) is None:
+            revenue[name] = product_revenue
+        else:
+            revenue[name] += product_revenue
+
+    return revenue
 
 
-print(read_product_price())
-print(read_product_sale())
+product_price = read_product_price()
+product_sale = read_product_sale()
+revenue = calculate_revenue(product_sale, product_price)
+
+print(product_price)
+print(product_sale)
+print(revenue)
